@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+const pageTitle = "pirolla.com bliki";
+const allPosts = await Astro.glob("../pages/content/*.md");
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <p>Here are the current posts</p>
+  <ul>
+    {
+      allPosts.map((post) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
+  </ul>
+</BaseLayout>
